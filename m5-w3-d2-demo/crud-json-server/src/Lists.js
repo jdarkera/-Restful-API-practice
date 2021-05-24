@@ -1,7 +1,9 @@
 import React from 'react';
+import UpdateList from './UpdateList';
+import DeleteList from './DeleteList';
 import "bootsrap/dist/css/bootsrap.min.css";
 
-function Lists(props){
+function List(props){
     let listrows=[];
     props.alldata.forEach(element => {
         listrows.push(
@@ -9,6 +11,25 @@ function Lists(props){
                 <td>{element.id}</td>
                 <td>{element.title}</td>
                <td>{element.author}</td>
+               <td>
+                   <UpdateList
+                        elementId={element.id}
+                        singledata={props.singledata}
+                        getList={props.getList}
+                        updateList={props.updateList}
+                        handleChange={props.handleChange}
+                    >
+                   </UpdateList>
+               </td>
+               <td>
+                   <DeleteList
+                        elementId={element.id}
+                        singledata={props.singledata}
+                        getList={props.getList}
+                        deleteList={props.updateList}
+                    >
+                   </DeleteList>
+               </td>
             </tr>
         )
     })
@@ -28,4 +49,4 @@ function Lists(props){
     </table>
   )
 }
-export default Lists; 
+export default List; 
